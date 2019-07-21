@@ -1,0 +1,56 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<LabelPrinterRazorEngine.Labels.LabelModel>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Label</title>
+    <style type="text/css">
+        html, body {
+            font-size: @(Model.Ratio.ToString(System.Globalization.CultureInfo.InvariantCulture))px;
+            width: @(Model.Width.ToString(System.Globalization.CultureInfo.InvariantCulture))em;
+            height: @(Model.Height.ToString(System.Globalization.CultureInfo.InvariantCulture))em;
+        }
+    </style>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0.1em;
+        }
+
+        .label {
+            width: 9.6em;
+            height: 3.6em;
+            border: 0.1em solid #000;
+            background: #FFF;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 0.7em;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="label">
+        <h1>@Model.Title</h1>
+        <p>
+            <strong>Date:</strong> @Model.Date.ToShortDateString()
+            -
+            <strong>Time:</strong> @Model.Time.ToString(@"hh\:mm")
+        </p>
+        <p>
+            <strong>Description:</strong> @Model.Description
+        </p>
+    </div>
+</body>
+</html>
